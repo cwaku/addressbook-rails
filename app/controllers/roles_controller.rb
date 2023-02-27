@@ -2,7 +2,8 @@
 
 class RolesController < ApplicationController
   before_action :set_role, only: %i[show edit update destroy]
-
+  before_action :load_permissions
+  load_and_authorize_resource
   # GET /roles or /roles.json
   def index
     @roles = Role.all

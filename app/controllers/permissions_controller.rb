@@ -2,6 +2,8 @@
 
 class PermissionsController < ApplicationController
   before_action :set_permission, only: %i[show edit update destroy]
+  before_action :load_permissions
+  load_and_authorize_resource
 
   # GET /permissions or /permissions.json
   def index

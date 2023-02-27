@@ -2,7 +2,8 @@
 
 class PermissionsRolesController < ApplicationController
   before_action :set_permissions_role, only: %i[show edit update destroy]
-
+  before_action :load_permissions
+  load_and_authorize_resource
   # GET /permissions_roles or /permissions_roles.json
   def index
     @permissions_roles = PermissionsRole.all
