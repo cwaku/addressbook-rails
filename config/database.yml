@@ -23,16 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: addressbook_rails_development
+  database: ricky
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: addressbook_rails
+  username: ricky
 
   # The password associated with the postgres role (username).
-  #password:
+  password: dirtycode
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -41,7 +41,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 4044
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
