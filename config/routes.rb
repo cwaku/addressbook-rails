@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   resources :permissions_roles
   resources :permissions
   resources :user_roles
