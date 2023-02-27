@@ -5,5 +5,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :user_roles, -> { where active_status: true }, class_name: 'UserRole', foreign_key: :user_id
+  has_one :user_role, -> { where active_status: true, del_status: false }, class_name: "UserRole", foreign_key: :user_id
+  has_many :roles, through: :user_roles, primary_key: :role_code
 end
