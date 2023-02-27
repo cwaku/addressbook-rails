@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateUsers < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
@@ -8,8 +6,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email
       t.boolean :active_status
       t.boolean :del_status
-      t.timestamp :created_at
-      t.timestamp :updated_at
 
       t.timestamps
     end

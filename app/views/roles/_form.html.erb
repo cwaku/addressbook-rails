@@ -1,47 +1,16 @@
-<%= form_with(model: role) do |form| %>
-  <% if role.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
 
-      <ul>
-        <% role.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@role) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :unique_code %>
+    <%= f.input :active_status %>
+    <%= f.input :del_status %>
   </div>
 
-  <div>
-    <%= form.label :unique_code, style: "display: block" %>
-    <%= form.text_field :unique_code %>
-  </div>
-
-  <div>
-    <%= form.label :active_status, style: "display: block" %>
-    <%= form.check_box :active_status %>
-  </div>
-
-  <div>
-    <%= form.label :del_status, style: "display: block" %>
-    <%= form.check_box :del_status %>
-  </div>
-
-  <div>
-    <%= form.label :created_at, style: "display: block" %>
-    <%= form.datetime_field :created_at %>
-  </div>
-
-  <div>
-    <%= form.label :updated_at, style: "display: block" %>
-    <%= form.datetime_field :updated_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

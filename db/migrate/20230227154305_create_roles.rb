@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateRoles < ActiveRecord::Migration[7.0]
   def change
     create_table :roles do |t|
@@ -7,8 +5,6 @@ class CreateRoles < ActiveRecord::Migration[7.0]
       t.string :unique_code
       t.boolean :active_status
       t.boolean :del_status
-      t.timestamp :created_at
-      t.timestamp :updated_at
 
       t.timestamps
     end

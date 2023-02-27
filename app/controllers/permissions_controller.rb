@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class PermissionsController < ApplicationController
-  before_action :set_permission, only: %i[show edit update destroy]
+  before_action :set_permission, only: %i[ show edit update destroy ]
 
   # GET /permissions or /permissions.json
   def index
@@ -9,7 +7,8 @@ class PermissionsController < ApplicationController
   end
 
   # GET /permissions/1 or /permissions/1.json
-  def show; end
+  def show
+  end
 
   # GET /permissions/new
   def new
@@ -17,7 +16,8 @@ class PermissionsController < ApplicationController
   end
 
   # GET /permissions/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /permissions or /permissions.json
   def create
@@ -25,7 +25,7 @@ class PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission.save
-        format.html { redirect_to permission_url(@permission), notice: 'Permission was successfully created.' }
+        format.html { redirect_to permission_url(@permission), notice: "Permission was successfully created." }
         format.json { render :show, status: :created, location: @permission }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class PermissionsController < ApplicationController
   def update
     respond_to do |format|
       if @permission.update(permission_params)
-        format.html { redirect_to permission_url(@permission), notice: 'Permission was successfully updated.' }
+        format.html { redirect_to permission_url(@permission), notice: "Permission was successfully updated." }
         format.json { render :show, status: :ok, location: @permission }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,20 +52,19 @@ class PermissionsController < ApplicationController
     @permission.destroy
 
     respond_to do |format|
-      format.html { redirect_to permissions_url, notice: 'Permission was successfully destroyed.' }
+      format.html { redirect_to permissions_url, notice: "Permission was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_permission
+      @permission = Permission.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_permission
-    @permission = Permission.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def permission_params
-    params.require(:permission).permit(:subject_class, :action, :name, :description, :created_at, :updated_at)
-  end
+    # Only allow a list of trusted parameters through.
+    def permission_params
+      params.require(:permission).permit(:subject_class, :action, :name, :description)
+    end
 end

@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class PermissionsRolesController < ApplicationController
-  before_action :set_permissions_role, only: %i[show edit update destroy]
+  before_action :set_permissions_role, only: %i[ show edit update destroy ]
 
   # GET /permissions_roles or /permissions_roles.json
   def index
@@ -9,7 +7,8 @@ class PermissionsRolesController < ApplicationController
   end
 
   # GET /permissions_roles/1 or /permissions_roles/1.json
-  def show; end
+  def show
+  end
 
   # GET /permissions_roles/new
   def new
@@ -17,7 +16,8 @@ class PermissionsRolesController < ApplicationController
   end
 
   # GET /permissions_roles/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /permissions_roles or /permissions_roles.json
   def create
@@ -25,9 +25,7 @@ class PermissionsRolesController < ApplicationController
 
     respond_to do |format|
       if @permissions_role.save
-        format.html do
-          redirect_to permissions_role_url(@permissions_role), notice: 'Permissions role was successfully created.'
-        end
+        format.html { redirect_to permissions_role_url(@permissions_role), notice: "Permissions role was successfully created." }
         format.json { render :show, status: :created, location: @permissions_role }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,9 +38,7 @@ class PermissionsRolesController < ApplicationController
   def update
     respond_to do |format|
       if @permissions_role.update(permissions_role_params)
-        format.html do
-          redirect_to permissions_role_url(@permissions_role), notice: 'Permissions role was successfully updated.'
-        end
+        format.html { redirect_to permissions_role_url(@permissions_role), notice: "Permissions role was successfully updated." }
         format.json { render :show, status: :ok, location: @permissions_role }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,20 +52,19 @@ class PermissionsRolesController < ApplicationController
     @permissions_role.destroy
 
     respond_to do |format|
-      format.html { redirect_to permissions_roles_url, notice: 'Permissions role was successfully destroyed.' }
+      format.html { redirect_to permissions_roles_url, notice: "Permissions role was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_permissions_role
+      @permissions_role = PermissionsRole.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_permissions_role
-    @permissions_role = PermissionsRole.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def permissions_role_params
-    params.require(:permissions_role).permit(:permission_id, :role_id, :role_code, :created_at, :updated_at)
-  end
+    # Only allow a list of trusted parameters through.
+    def permissions_role_params
+      params.require(:permissions_role).permit(:permission_id, :role_id, :role_code)
+    end
 end

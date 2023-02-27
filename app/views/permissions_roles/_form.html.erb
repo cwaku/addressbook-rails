@@ -1,42 +1,15 @@
-<%= form_with(model: permissions_role) do |form| %>
-  <% if permissions_role.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(permissions_role.errors.count, "error") %> prohibited this permissions_role from being saved:</h2>
 
-      <ul>
-        <% permissions_role.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@permissions_role) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div>
-    <%= form.label :permission_id, style: "display: block" %>
-    <%= form.number_field :permission_id %>
+  <div class="form-inputs">
+    <%= f.input :permission_id %>
+    <%= f.input :role_id %>
+    <%= f.input :role_code %>
   </div>
 
-  <div>
-    <%= form.label :role_id, style: "display: block" %>
-    <%= form.number_field :role_id %>
-  </div>
-
-  <div>
-    <%= form.label :role_code, style: "display: block" %>
-    <%= form.text_field :role_code %>
-  </div>
-
-  <div>
-    <%= form.label :created_at, style: "display: block" %>
-    <%= form.datetime_field :created_at %>
-  </div>
-
-  <div>
-    <%= form.label :updated_at, style: "display: block" %>
-    <%= form.datetime_field :updated_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

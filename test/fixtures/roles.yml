@@ -5,13 +5,9 @@ one:
   unique_code: MyString
   active_status: false
   del_status: false
-  created_at: 2023-02-27 14:24:22
-  updated_at: 2023-02-27 14:24:22
 
 two:
   name: MyString
   unique_code: MyString
   active_status: false
   del_status: false
-  created_at: 2023-02-27 14:24:22
-  updated_at: 2023-02-27 14:24:22

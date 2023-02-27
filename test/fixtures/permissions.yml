@@ -5,13 +5,9 @@ one:
   action: MyString
   name: MyString
   description: MyString
-  created_at: 2023-02-27 14:28:59
-  updated_at: 2023-02-27 14:28:59
 
 two:
   subject_class: MyString
   action: MyString
   name: MyString
   description: MyString
-  created_at: 2023-02-27 14:28:59
-  updated_at: 2023-02-27 14:28:59

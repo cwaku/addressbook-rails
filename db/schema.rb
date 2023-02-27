@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_227_092_508) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_154902) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "subject_class"
+    t.string "action"
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_roles", force: :cascade do |t|
+    t.integer "permission_id"
+    t.integer "role_id"
+    t.string "role_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "unique_code"
+    t.boolean "active_status"
+    t.boolean "del_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.string "role_code"
+    t.integer "user_id"
+    t.boolean "active_status"
+    t.boolean "del_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.boolean "active_status"
+    t.boolean "del_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

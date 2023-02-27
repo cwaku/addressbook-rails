@@ -6,8 +6,6 @@ one:
   email: MyString
   active_status: false
   del_status: false
-  created_at: 2023-02-27 14:22:45
-  updated_at: 2023-02-27 14:22:45
 
 two:
   firstname: MyString
@@ -15,5 +13,3 @@ two:
   email: MyString
   active_status: false
   del_status: false
-  created_at: 2023-02-27 14:22:45
-  updated_at: 2023-02-27 14:22:45
