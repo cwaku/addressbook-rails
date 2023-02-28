@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :contacts
+  resources :suburbs
+  resources :cities
+  resources :regions
   get 'home/index'
   devise_for :users
   resources :permissions_roles
