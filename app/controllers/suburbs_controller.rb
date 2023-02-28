@@ -68,4 +68,8 @@ class SuburbsController < ApplicationController
   def suburb_params
     params.require(:suburb).permit(:name, :remarks, :user_id, :city_id)
   end
+
+  def self.permission
+    return 'Suburb'
+  end
 end

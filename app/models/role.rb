@@ -5,17 +5,39 @@ class Role < ApplicationRecord
   has_and_belongs_to_many :permissions, foreign_key: :role_code
 
   # TODO: Fix this
+  # Sets the permissions on this object.
   def set_permissions(permissions)
     permissions.each do |id|
       permission = Permission.find(id)
       self.permissions << permission
       case permission.subject_class
-      when 'Part'
-        case permission.actionm
+      when 'Contact'
+        case permission.action
         when 'create'
-          self.permissions << Permission.where(subject_class: 'Drawing', action: 'create')
+          self.permissions << Permission.where(subject_class: 'Contact', action: 'create')
         when 'update'
-          self.permissions << Permission.where(subject_class: 'Drawing', action: %w[update destroy])
+          self.permissions << Permission.where(subject_class: 'Contact', action: %w[update destroy])
+        end
+      when 'Region'
+        case permission.action
+        when 'create'
+          self.permissions << Permission.where(subject_class: 'Region', action: 'create')
+        when 'update'
+          self.permissions << Permission.where(subject_class: 'Region', action: %w[update destroy])
+        end
+      when 'Suburb'
+        case permission.action
+        when 'create'
+          self.permissions << Permission.where(subject_class: 'Suburb', action: 'create')
+        when 'update'
+          self.permissions << Permission.where(subject_class: 'Suburb', action: %w[update destroy])
+        end
+      when 'City'
+        case permission.action
+        when 'create'
+          self.permissions << Permission.where(subject_class: 'City', action: 'create')
+        when 'update'
+          self.permissions << Permission.where(subject_class: 'City', action: %w[update destroy])
         end
       end
     end

@@ -68,4 +68,8 @@ class RegionsController < ApplicationController
   def region_params
     params.require(:region).permit(:name, :remarks, :user_id)
   end
+
+  def self.permission
+    return 'Region'
+  end
 end
