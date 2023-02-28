@@ -18,7 +18,7 @@ class RolesController < ApplicationController
 
   # GET /roles/new
   def new
-    @entity_info_search = EntityInfo.where(active_status: true).order(entity_name: :asc)
+    # @entity_info_search = EntityInfo.where(active_status: true).order(entity_name: :asc)
 
     @role = Role.new
     @permissions = Permission.all.where("subject_class !='Role'").compact
@@ -33,7 +33,7 @@ class RolesController < ApplicationController
 
   # POST /roles or /roles.json
   def create
-    @role = Role.new(role_params)
+    # @role = Role.new(role_params)
     @role = Role.new(role_params)
     @role.permissions = []
     @role.set_permissions(params[:permissions]) if params[:permissions]
