@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :users
   resources :permissions_roles
   resources :permissions
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'contacts#index'
+  root 'home#index'
 end

@@ -14,6 +14,7 @@ class RolesController < ApplicationController
   # GET /roles/1 or /roles/1.json
   def show
     # @role = Role.find(params[:id])
+    @permissions = @role.permissions
   end
 
   # GET /roles/new
@@ -92,7 +93,7 @@ class RolesController < ApplicationController
   end
 
   def super_admin?
-    return true if current_user.role.name == 'Super Admin'
+    return true if current_user.super_admin?
 
     redirect_to root_path, notice: 'You are not authorized to access this page.'
   end
