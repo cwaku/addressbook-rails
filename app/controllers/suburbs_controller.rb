@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SuburbsController < ApplicationController
-  before_action :set_suburb, only: %i[ show edit update destroy ]
+  before_action :set_suburb, only: %i[show edit update destroy]
 
   # GET /suburbs or /suburbs.json
   def index
@@ -7,8 +9,7 @@ class SuburbsController < ApplicationController
   end
 
   # GET /suburbs/1 or /suburbs/1.json
-  def show
-  end
+  def show; end
 
   # GET /suburbs/new
   def new
@@ -16,8 +17,7 @@ class SuburbsController < ApplicationController
   end
 
   # GET /suburbs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /suburbs or /suburbs.json
   def create
@@ -25,7 +25,7 @@ class SuburbsController < ApplicationController
 
     respond_to do |format|
       if @suburb.save
-        format.html { redirect_to suburb_url(@suburb), notice: "Suburb was successfully created." }
+        format.html { redirect_to suburb_url(@suburb), notice: 'Suburb was successfully created.' }
         format.json { render :show, status: :created, location: @suburb }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SuburbsController < ApplicationController
   def update
     respond_to do |format|
       if @suburb.update(suburb_params)
-        format.html { redirect_to suburb_url(@suburb), notice: "Suburb was successfully updated." }
+        format.html { redirect_to suburb_url(@suburb), notice: 'Suburb was successfully updated.' }
         format.json { render :show, status: :ok, location: @suburb }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class SuburbsController < ApplicationController
     @suburb.destroy
 
     respond_to do |format|
-      format.html { redirect_to suburbs_url, notice: "Suburb was successfully destroyed." }
+      format.html { redirect_to suburbs_url, notice: 'Suburb was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_suburb
-      @suburb = Suburb.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def suburb_params
-      params.require(:suburb).permit(:name, :remarks, :user_id, :city_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_suburb
+    @suburb = Suburb.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def suburb_params
+    params.require(:suburb).permit(:name, :remarks, :user_id, :city_id)
+  end
 end

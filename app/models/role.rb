@@ -10,12 +10,12 @@ class Role < ApplicationRecord
       permission = Permission.find(id)
       self.permissions << permission
       case permission.subject_class
-      when "Part"
+      when 'Part'
         case permission.actionm
-        when "create"
-          self.permissions << Permission.where(subject_class: "Drawing", action: "create")
-        when "update"
-          self.permissions << Permission.where(subject_class: "Drawing", action: ["update", "destroy"])
+        when 'create'
+          self.permissions << Permission.where(subject_class: 'Drawing', action: 'create')
+        when 'update'
+          self.permissions << Permission.where(subject_class: 'Drawing', action: %w[update destroy])
         end
       end
     end

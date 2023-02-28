@@ -1,45 +1,48 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class RegionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @region = regions(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get regions_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_region_url
     assert_response :success
   end
 
-  test "should create region" do
-    assert_difference("Region.count") do
+  test 'should create region' do
+    assert_difference('Region.count') do
       post regions_url, params: { region: { name: @region.name, remarks: @region.remarks, user_id: @region.user_id } }
     end
 
     assert_redirected_to region_url(Region.last)
   end
 
-  test "should show region" do
+  test 'should show region' do
     get region_url(@region)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_region_url(@region)
     assert_response :success
   end
 
-  test "should update region" do
-    patch region_url(@region), params: { region: { name: @region.name, remarks: @region.remarks, user_id: @region.user_id } }
+  test 'should update region' do
+    patch region_url(@region),
+          params: { region: { name: @region.name, remarks: @region.remarks, user_id: @region.user_id } }
     assert_redirected_to region_url(@region)
   end
 
-  test "should destroy region" do
-    assert_difference("Region.count", -1) do
+  test 'should destroy region' do
+    assert_difference('Region.count', -1) do
       delete region_url(@region)
     end
 
