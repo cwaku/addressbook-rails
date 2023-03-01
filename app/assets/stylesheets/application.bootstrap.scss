@@ -1,2 +1,65 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+.signup {
+    padding: 20px;
+    border-radius: 5px;
+    height: 100vh;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
+    
+    .signup-intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: #f3f5f9;
+        height: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        
+        p {
+            font-size: 14px;
+            color: #999da8;
+        }
+
+        .quote-card {
+            background-color: #2d3345;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            
+            p {
+                color: #fff;
+            }
+        }
+    }
+
+    .signup-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 50px;
+
+        p {
+            font-size: 14px;
+            color: #999da8;
+        }
+
+        a {
+            color: #2d3345;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    }
+
+    .submit-btn {
+        width: 100%;
+        color: #fff;
+    }
+}

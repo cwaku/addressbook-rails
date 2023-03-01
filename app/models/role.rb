@@ -6,7 +6,7 @@ class Role < ApplicationRecord
 
   # TODO: Fix this
   # Sets the permissions on this object.
-  def set_permissions(permissions)
+  def set_permissions(permissions)dWgpo%Rjb^iyc4%
     permissions.each do |id|
       permission = Permission.find(id)
       self.permissions << permission
