@@ -70,6 +70,6 @@ class ContactsController < ApplicationController
   end
 
   def self.permission
-    return 'Contact'
+    'Contact'
   end
 end

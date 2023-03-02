@@ -12,9 +12,23 @@
 
   <body>
     <%# check if signed in %>
-    <% if user_signed_in? %>
-      <%= render "shared/navbar" %>
-      <% end %>
-    <%= yield %>
+
+        <div class="container-fluid main-layout">
+        <div class="row">
+          <%#  if signed in, add a sidebar %>
+          <% if user_signed_in? %>
+            <div class="col-md-2 sidebar">
+              <%= render "shared/sidebar" %>
+            </div>
+          <% end %>
+          <div class="col">
+            <%#  render the content %>
+            <% if user_signed_in? %>
+            <%# render navbar %>
+            <%= render "shared/navbar" %>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
   </body>
 </html>

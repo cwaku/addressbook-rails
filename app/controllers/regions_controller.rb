@@ -70,6 +70,6 @@ class RegionsController < ApplicationController
   end
 
   def self.permission
-    return 'Region'
+    'Region'
   end
 end

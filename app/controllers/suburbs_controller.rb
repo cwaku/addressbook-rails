@@ -70,6 +70,6 @@ class SuburbsController < ApplicationController
   end
 
   def self.permission
-    return 'Suburb'
+    'Suburb'
   end
 end

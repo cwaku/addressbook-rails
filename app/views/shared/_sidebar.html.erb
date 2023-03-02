@@ -1,0 +1,36 @@
+<%# populate sidebar content %>
+<div class="sidebar-actions">
+  <%# <div> %>
+    <h3>RookieContact</h3>
+  <%# </div> %>
+  <ul>
+  <li>
+    <% if can? :read, User %>
+      <i class="bi bi-person"></i> <%= link_to "Users", users_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if can? :read, Contact %>
+      <i class="bi bi-journal-richtext"></i> <%= link_to "Contacts", contacts_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if can? :read, Region %>
+      <i class="bi bi-compass"></i> <%= link_to "Regions", regions_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if can? :read, City %>
+      <i class="bi bi-pin-map"></i> <%= link_to "Cities", cities_path %>
+    <% end %>
+  </li>
+  </ul>
+</div>
+<div class="sidebar-footer">
+  <ul>
+    <% if user_signed_in? %>
+      <li><% if can? :update, User %><%= button_to raw("<i class=\"bi bi-pen\"></i> Edit Profile"), "/users/#{current_user.id}/edit" %><% end %></li>
+      <li><%= button_to raw("<i class=\"bi bi-box-arrow-left\"></i> Sign Out"), destroy_user_session_path, method: :delete %></li>
+    <% end %>
+  </ul>
+</div>
