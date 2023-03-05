@@ -6,6 +6,8 @@ class CitiesController < ApplicationController
   # GET /cities or /cities.json
   def index
     @cities = City.all
+    @c_cities = Region.find(params[:region_id]).cities and render json: @c_cities if params[:region_id]
+    # render json: @c_cities
   end
 
   # GET /cities/1 or /cities/1.json

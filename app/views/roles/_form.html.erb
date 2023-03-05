@@ -27,8 +27,9 @@
     </table>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions add-form-btns">
+    <%= f.button :submit, class: "form-btn" %>
+    <%= button_to "Return to roles", roles_path %>
   </div>
 <% end %>
 

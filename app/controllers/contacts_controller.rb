@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @region_search = Region.all.order(name: :asc)
   end
 
   # GET /contacts/1/edit
@@ -22,9 +23,11 @@ class ContactsController < ApplicationController
   # POST /contacts or /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    # convert the surburb_id to bigint
+    @contact.suburb_id = @contact.suburb_id.to_i
 
     respond_to do |format|
-      if @contact.save
+      if @contact.save!
         format.html { redirect_to contact_url(@contact), notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
@@ -66,7 +69,7 @@ class ContactsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def contact_params
-    params.require(:contact).permit(:firstname, :lastname, :phone, :remarks, :user_id, :suburb_id)
+    params.require(:contact).permit(:firstname, :lastname, :phone, :remarks, :user_id, :suburb_id, :city_id, :region_id)
   end
 
   def self.permission

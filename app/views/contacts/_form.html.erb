@@ -8,11 +8,16 @@
     <%= f.input :lastname %>
     <%= f.input :phone %>
     <%= f.input :remarks %>
+    <%= f.input :region_id, label: "Region", collection: Region.all , prompt: "Select a region", input_html: { id: "region-select" } %>
+    <%= f.input :city_id, collection: [], prompt: "Select a city", input_html: { id: "city-select" } %>
+    <%= f.input :suburb_id, collection: [], prompt: "Select a suburb", input_html: { id: "suburb-select" } %>
     <%= f.association :user %>
-    <%= f.association :suburb %>
+    <%# f.association :suburb %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions add-form-btns">
+    <%= f.button :submit, class: "form-btn" %>
+    <%# Navigate back to contacts %>
+    <%= button_to "Return to contacts", contacts_path %>
   </div>
 <% end %>
