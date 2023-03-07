@@ -6,7 +6,7 @@
   <ul>
   <li>
     <% if can? :read, Role %>
-      <i class="bi bi-person"></i> <%= link_to "Roles", roles_path %>
+      <i class="bi bi-shield"></i> <%= link_to "Roles", roles_path %>
       <% end %>
   </li>
   <li>
@@ -31,7 +31,7 @@
   </li>
   <li>
     <% if can? :read, Suburb %>
-      <i class="bi bi-pin-map-fill"></i> <%= link_to "Suburbs", suburbs_path %>
+      <i class="bi bi-geo"></i> <%= link_to "Suburbs", suburbs_path %>
     <% end %>
   </ul>
 </div>

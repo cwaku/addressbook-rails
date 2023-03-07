@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
-  attr_accessor :region_id, :city_id, :suburb_id
+  attr_accessor :region_id, :city_id
 
   belongs_to :user
   belongs_to :suburb

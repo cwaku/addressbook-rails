@@ -290,3 +290,58 @@ form {
     }
 
 }
+
+// Styles for index pages
+.index-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #9e9a9ae5;
+
+            a {
+                color: #2d3345;
+                text-decoration: none;
+            }
+
+            &:hover {
+                a {
+                    color: #018270;
+                }
+            }
+        }
+    }
+}
+
+.index-pages {
+    
+    .details {
+        display: flex;
+        justify-content: space-between;
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-left: 10px;
+
+            p {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.5;
+                color: #999da8;
+            }
+        }
+    }
+}

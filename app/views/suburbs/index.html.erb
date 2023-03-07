@@ -1,14 +1,41 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Suburbs</h1>
-
-<div id="suburbs">
-  <% @suburbs.each do |suburb| %>
-    <%= render suburb %>
-    <p>
-      <%= link_to "Show this suburb", suburb %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "Add new suburb", new_suburb_path %>
+<% if @suburbs.empty? %>
+  <p>No records found</p>
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Suburb Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Remarks</th>
+        <th scope="col">Creator</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @suburbs.each do | suburb| %>
+          <tr>
+            <td><%= suburb.id %></td>
+            <td><%= suburb.name %></td>
+            <td><%= suburb.city.name %></td>
+            <td><%= suburb.remarks %></td>
+            <td><%= suburb.user.user_role.role_code %></td>
+            <td>
+              <% if can? :read, suburb %>
+                <%= link_to raw("<i class=\"bi bi-eye\"></i>"), suburb_path(suburb) %>
+              <% end %>
+              <% if can? :update, suburb %>
+                <%= link_to raw("<i class=\"bi bi-pencil\"></i>"), edit_suburb_path(suburb) %>
+              <% end %>
+              <% if can? :destroy, suburb %>
+                <%= link_to raw("<i class=\"bi bi-trash\"></i>"), suburb_path(suburb), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

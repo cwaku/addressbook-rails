@@ -6,7 +6,7 @@ class SuburbsController < ApplicationController
   # GET /suburbs or /suburbs.json
   def index
     @suburbs = Suburb.all
-    @c_suburbs = City.find(params[:city_id]).suburbs
+    @c_suburbs = City.find(params[:city_id]).suburbs if params[:city_id]
   end
 
   # GET /suburbs/1 or /suburbs/1.json
