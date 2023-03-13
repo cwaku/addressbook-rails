@@ -8,6 +8,19 @@ class User < ApplicationRecord
   has_one :user_role, -> { where active_status: true, del_status: false }, class_name: 'UserRole', foreign_key: :user_id
   has_many :roles, through: :user_role, class_name: 'Role', foreign_key: :role_code
 
+  validates :firstname, presence: true
+  validates :lastname, presence: true
+  validates :email, presence: true
+
+  # remove whitespaces from user
+  before_save :remove_whitespaces
+
+  def remove_whitespaces
+    self.firstname = firstname.strip
+    self.lastname = lastname.strip
+    self.email = email.strip
+  end
+
   def super_admin?
     roles.where(unique_code: 'SA').present?
   end

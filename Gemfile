@@ -78,4 +78,6 @@ end
 
 gem 'cancancan'
 gem 'devise'
+gem 'pagy'
+gem 'ransack'
 gem 'simple_form'

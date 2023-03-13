@@ -30,6 +30,7 @@
             <%= render "shared/navbar" %>
             <% end %>
             <%= yield %>
+            <%= turbo_frame_tag "delete_modal", target: "_top" %>
           </div>
         </div>
 

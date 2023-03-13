@@ -1,0 +1,9 @@
+<%= form_with url: contacts_path, method: :get, data: { turbo_frame: "contact-result"}, controller: 'form', action: 'input->form#submit' do %>
+    <%= text_field_tag 'filter', nil, placeholder: 'Filter by name', class: 'form-control w-50' %>
+<% end %>
+
+<%# Filter by name, city or suburb %>
+
+
+<%# Filter by date %>
+<

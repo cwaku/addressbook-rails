@@ -3,7 +3,8 @@
 <% if @roles.empty? %>
   <p>No records found</p>
 <% else %>
-  <div class="table-responsive">
+  <fieldset class="table-responsive">
+    <legend>List of all roles</legend>
     <table class="table table-striped table-sm">
     <thead>
       <tr>
@@ -22,20 +23,41 @@
             <td><%= role.name %></td>
             <td><%= role.active_status %></td>
             <td><%= role.del_status %></td>
-            <td>
+            <td class="table-td">
               <% if can? :read, role %>
-                <%= link_to raw("<i class=\"bi bi-eye\"></i>"), role_path(role) %>
+                <%= link_to raw("<i class=\"bi bi-eye\"></i>"), role_path(role), class: "btn btn-primary" %>
               <% end %>
               <% if can? :update, role %>
-                <%= link_to raw("<i class=\"bi bi-pencil\"></i>"), edit_role_path(role) %>
+                <%= link_to raw("<i class=\"bi bi-pencil\"></i>"), edit_role_path(role), class: "btn btn-secondary" %>
               <% end %>
               <% if can? :destroy, role %>
-                <%= link_to raw("<i class=\"bi bi-trash\"></i>"), role_path(role), method: :delete, data: { confirm: "Are you sure?" } %>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmationModal">
+                  <i class="bi bi-trash"></i>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="confirmationModalLabel">Delete role</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Are you sure you want to delete this role?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <%= button_to raw("<i class=\"bi bi-trash\"></i> Delete"), role_path(role), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this role?" } %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <!- - End of modal - ->
               <% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
+  </fieldset>
 <% end %>

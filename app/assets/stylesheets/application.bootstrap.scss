@@ -1,32 +1,45 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+fieldset {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    legend {
+        width: auto;
+        padding: 0 10px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: center;
+        color: #999da8;
+    }
+
+    .table-td {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+    }
+}
 
 form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    // align-items: center;
-    // height: 100%;
-    // padding: 20px;
-    // border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    // background-color: #f3f5f9;
 
     .form-inputs {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        // align-items: center;
-        // height: 100%;
-        // width: 100%;
         padding: 10px 75px;
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         background-color: #f3f5f9;
 
         input, textarea, select {
-            // width: 100%;
             padding: 10px;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
@@ -34,7 +47,6 @@ form {
             font-size: 14px;
             font-weight: 500;
             line-height: 1.5;
-            // text-align: center;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
             &:focus {

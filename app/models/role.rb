@@ -4,10 +4,19 @@ class Role < ApplicationRecord
   has_many :user_roles, class_name: 'UserRole', foreign_key: :role_code, primary_key: :unique_code
   has_and_belongs_to_many :permissions, foreign_key: :role_code
 
+  validates :name, presence: true
+
+  # remove whitespaces from role
+  before_save :remove_whitespaces
+
+  def remove_whitespaces
+    self.name = name.strip
+    self.unique_code = unique_code.strip
+  end
+
   # TODO: Fix this
   # Sets the permissions on this object.
   def set_permissions(permissions)
-    dWgpo % Rjb ^ iyc4 %
                   permissions.each do |id|
                     permission = Permission.find(id)
                     self.permissions << permission

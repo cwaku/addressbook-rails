@@ -1,23 +1,22 @@
 
 <%= simple_form_for(@contact) do |f| %>
-  <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :firstname %>
+    <%= inline_error_for(:firstname, @contact) %>
     <%= f.input :lastname %>
     <%= f.input :phone %>
     <%= f.input :remarks %>
-    <%= f.input :region_id, label: "Region", collection: Region.all , prompt: "Select a region", input_html: { id: "region-select" } %>
-    <%= f.input :city_id, collection: [], prompt: "Select a city", input_html: { id: "city-select" } %>
-    <%= f.association :suburb, collection: [], prompt: "Select a suburb", input_html: { id: "suburb-select" } %>
-    <%= f.association :user %>
-    <%# f.association :suburb %>
+    <%= f.input :region_id, label: "Region", collection: Region.all , selected: @selected_region, prompt: "Select a region", input_html: { id: "region-select" } %>
+    <%= f.input :city_id, label: "City", collection: City.all, selected: @selected_city, prompt: "Select a city", input_html: { id: "city-select" } %>
+    <%= f.association :suburb, collection: Suburb.all, selected: @selected_suburb, prompt: "Select a suburb", input_html: { id: "suburb-select" } %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
   </div>
 
   <div class="form-actions add-form-btns">
     <%= f.button :submit, class: "form-btn" %>
-    <%# Navigate back to contacts %>
     <%= button_to "Return to contacts", contacts_path %>
   </div>
 <% end %>

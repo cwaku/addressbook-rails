@@ -1,4 +1,10 @@
 <p style="color: green"><%= notice %></p>
+<%# show flash notice  %>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 
 <%= render @contact %>
 

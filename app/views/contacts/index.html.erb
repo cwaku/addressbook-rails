@@ -1,11 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
+
+
 <%# Create tabble to hold all contacts with pagination %>
 <% if @contacts.empty? %>
   <p>No records found</p>
 <% else %>
-  <div id="contacts">
-  <div class="table-responsive">
+  <%# <turbo-stream target="contacts" action="replace"> %>
+  <fieldset class="table-responsive">
+    <legend>List of all contacts</legend>
+    <%# Add filter %>
+    <%= render partial: 'filter' %>
+    <%= turbo_frame_tag "contacts" do %>
     <table class="table table-striped table-sm">
       <thead>
         <tr>
@@ -20,33 +26,20 @@
         </tr>
       </thead>
       <tbody>
+        <% index = 0 %>
         <% @contacts.each do |contact| %>
-          <tr>
-            <td><%= contact.id %></td>
-            <td><%= contact.firstname %></td>
-            <td><%= contact.lastname %></td>
-            <td><%= contact.phone %></td>
-            <td><%= contact.suburb.city.region.name %></td>
-            <td><%= contact.suburb.city.name %></td>
-            <td><%= contact.suburb.name %></td>
-            <td><%= contact.remarks %></td>
-            <td>
-              <% if can? :read, contact %>
-                <%= link_to raw("<i class=\"bi bi-eye\"></i>"), contact_path(contact) %>
-              <% end %>
-              <% if can? :update, contact %>
-                <%= link_to raw("<i class=\"bi bi-pencil\"></i>"), edit_contact_path(contact) %>
-              <% end %>
-              <% if can? :destroy, contact %>
-                <%= link_to raw("<i class=\"bi bi-trash\"></i>"), contact_path(contact), method: :delete, data: { confirm: "Are you sure?" } %>
-              <% end %>
-            </td>
-          </tr>
+          <% index += 1 %>
+          <%# render  contact %>
+          <%= render partial: 'contact', locals: { contact: contact, index: index } %>
         <% end %>
       </tbody>
     </table>
-  </div>
-  </div>
+        <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
+  </fieldset>
+  <%# </turbo-stream> %>
 <% end %>
+
+
 
 
