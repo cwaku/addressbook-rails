@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_133945) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_20_171143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_trackers", force: :cascade do |t|
+    t.string "session_id"
+    t.string "mobile_number"
+    t.string "menu_function"
+    t.string "page", default: ""
+    t.string "message_type"
+    t.string "ussd_body"
+    t.string "activity_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mobile_number"], name: "index_activity_trackers_on_mobile_number"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -30,6 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_133945) do
     t.string "lastname"
     t.string "phone"
     t.text "remarks"
+    t.boolean "del", default: false
+    t.boolean "active", default: true
     t.bigint "user_id", null: false
     t.bigint "suburb_id", null: false
     t.datetime "created_at", null: false

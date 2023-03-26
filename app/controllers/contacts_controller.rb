@@ -23,9 +23,9 @@ class ContactsController < ApplicationController
     @pagy, @contacts = pagy(filtered.all, items: 10)
 
     # respond_to do |format|
-    #   format.html { @contacts = Contact.all }
-    #   format.json { render json: @contacts }
-    #   format.turbo_stream { render turbo_stream: turbo_stream.replace(@contacts, partial: 'contacts/contact', locals: { contact: @contacts }) }
+      # format.html { @contacts = Contact.all }
+      # format.json { render json: @contacts = Contact.all }
+      # format.turbo_stream { render turbo_stream: turbo_stream.replace(@contacts, partial: 'contacts/contact', locals: { contact: @contacts }) }
     # end
   end
 

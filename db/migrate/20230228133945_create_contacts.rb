@@ -7,6 +7,8 @@ class CreateContacts < ActiveRecord::Migration[7.0]
       t.string :lastname
       t.string :phone
       t.text :remarks
+      t.boolean :del, default: false
+      t.boolean :active, default: true
       t.references :user, null: false, foreign_key: true
       t.references :suburb, null: false, foreign_key: true
 
