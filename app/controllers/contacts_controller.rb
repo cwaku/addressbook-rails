@@ -9,6 +9,7 @@ class ContactsController < ApplicationController
 
     filtered_names = Contact.where('firstname LIKE ? OR lastname LIKE ?', "%#{params[:filter]}%",
                                    "%#{params[:filter]}%")
+
     # Use the ransack gem for searching and filtering
     # filtered contacts that falls between the dates using ransack
     @q = Contact.ransack(params[:q])
@@ -16,16 +17,9 @@ class ContactsController < ApplicationController
     # set multiple varaiables to one variable
     filtered = @q.result(distinct: true) if params[:q].present?
     filtered = filtered_names if params[:filter].present?
-    # filtered = @q.result(distinct: true)
 
     # Filter by  name, region, city, suburb firstname or date
     @pagy, @contacts = pagy(filtered.all, items: 10)
-
-    # respond_to do |format|
-    # format.html { @contacts = Contact.all }
-    # format.json { render json: @contacts = Contact.all }
-    # format.turbo_stream { render turbo_stream: turbo_stream.replace(@contacts, partial: 'contacts/contact', locals: { contact: @contacts }) }
-    # end
   end
 
   # GET /contacts/1 or /contacts/1.json
