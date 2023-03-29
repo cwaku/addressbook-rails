@@ -8,7 +8,8 @@
   <td><%= contact.suburb.city.region.name %></td>
   <td><%= contact.suburb.city.name %></td>
   <td><%= contact.suburb.name %></td>
-  <td><%= contact.remarks %></td>
+  <td><%= contact.remarks || 'N/A' %></td>
+  <td><%= contact.source %></td>
   <td class="table-td">
     <% if can? :update, contact %>
       <%= link_to raw("<i class=\"bi bi-pencil\"></i>"), edit_contact_path(contact), class: "btn btn-secondary" %>

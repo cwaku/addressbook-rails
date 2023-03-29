@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_20_171143) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_141000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_171143) do
     t.string "activity_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pagination_page", default: ""
     t.index ["mobile_number"], name: "index_activity_trackers_on_mobile_number"
   end
 
@@ -49,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_171143) do
     t.bigint "suburb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source", default: "portal"
     t.index ["suburb_id"], name: "index_contacts_on_suburb_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
@@ -121,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_171143) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.bigint "role_id"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
