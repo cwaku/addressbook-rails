@@ -14,7 +14,6 @@ class Contact < ApplicationRecord
   validates :lastname, presence: true
   validates :phone, presence: true
 
-  
   # remove whitespaces from contact
   def remove_whitespaces
     self.firstname = firstname.strip
