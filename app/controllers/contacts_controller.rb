@@ -6,7 +6,8 @@ class ContactsController < ApplicationController
   # GET /contacts or /contacts.json
   def index
     
-    filtered = Contact.all
+    filtered = current_user.contacts.order(:firstname)
+
     filtered_names = Contact.where('firstname LIKE ? OR lastname LIKE ?', "%#{params[:filter]}%", "%#{params[:filter]}%")
     # Use the ransack gem for searching and filtering
     # filtered contacts that falls between the dates using ransack
